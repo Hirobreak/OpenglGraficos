@@ -44,7 +44,8 @@ public:
 		m_persProj.zfar=zfar;
 	}
 
-	const Matrix4f& GetTrans();
+	const Matrix4f& getWVPTrans();
+	const Matrix4f& getWorldTrans();
 
 private:
 
@@ -66,7 +67,8 @@ private:
 		Vector3f up;
 	} m_camera;
 
-	Matrix4f m_transformation;
+	Matrix4f m_WVPtransformation;
+	Matrix4f m_worldTransform;
 };
 
 #endif
