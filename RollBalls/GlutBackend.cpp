@@ -25,6 +25,7 @@ static void  initCalls(){
 	glutDisplayFunc(display);
 	glutIdleFunc(idleDisp);
 	glutSpecialFunc(specialKeyboard);
+	glutKeyboardFunc(keyboardFunc);
 }
 
 void glutBackendInit(int argc, char** argv){
