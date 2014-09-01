@@ -23,14 +23,18 @@ bool Lighting::init(){
 
 	m_WVPLocation = getUnifLocation("gWVP");
 	m_WorldMatrixLocation = getUnifLocation("gWorld");
+	m_eyeWorld = getUnifLocation("gEyeWorldPos");
 	m_samplerLocation = getUnifLocation("gSampler");
 	m_dirLightLocation.color = getUnifLocation("gDirectionalLight.Color");
 	m_dirLightLocation.ambient = getUnifLocation("gDirectionalLight.AmbientIntensity");
 	m_dirLightLocation.direction = getUnifLocation("gDirectionalLight.Direction");
 	m_dirLightLocation.diffuse = getUnifLocation("gDirectionalLight.DiffuseIntensity");
+	m_SpecIntenLocation = getUnifLocation("gMatSpecularIntensity");
+	m_SpecPowerLocation = getUnifLocation("gSpecularPower");
 
 	if (m_dirLightLocation.color == 0xFFFFFFFF || m_samplerLocation == 0xFFFFFFFF || m_WorldMatrixLocation == 0xFFFFFFFF || m_WVPLocation == 0xFFFFFFFF ||
-		m_dirLightLocation.ambient == 0xFFFFFFFF || m_dirLightLocation.diffuse == 0xFFFFFFFF || m_dirLightLocation.direction == 0xFFFFFFFF){
+		m_dirLightLocation.ambient == 0xFFFFFFFF || m_dirLightLocation.diffuse == 0xFFFFFFFF || m_dirLightLocation.direction == 0xFFFFFFFF
+		|| m_eyeWorld == 0xFFFFFFFF || m_SpecIntenLocation == 0xFFFFFFFF || m_SpecPowerLocation == 0xFFFFFFFF){
 		return false;
 	}
 
@@ -56,4 +60,16 @@ void Lighting::setDirLight(const DirectionalLight &light){
 	direction.Normalize();
 	glUniform3f(m_dirLightLocation.direction, light.Direction.x, light.Direction.y, light.Direction.z);
 	glUniform1f(m_dirLightLocation.diffuse, (GLfloat)light.DiffuseIntensity);
+}
+
+void Lighting::setEyeWorldPos(const Vector3f &eyeWorldPos){
+	glUniform3f(m_eyeWorld, eyeWorldPos.x, eyeWorldPos.y, eyeWorldPos.z);
+}
+
+void Lighting::setMatSpecInten(float intensity){
+	glUniform1f(m_SpecIntenLocation, intensity);
+}
+
+void Lighting::setMatSpecPower(float power){
+	glUniform1f(m_SpecPowerLocation, power);
 }

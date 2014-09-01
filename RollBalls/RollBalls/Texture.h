@@ -9,14 +9,14 @@
 class Texture{
 
 public:
-	Texture(GLenum textureTarget, const std::string& fileName);
+	Texture(GLenum textureTarget, const char *fileName);
 
 	bool load();
 
 	void bind(GLenum textureUnit);
 
 private:
-	std::string m_fileName;
+	const char *m_fileName;
 	GLenum m_textureTarget;
 	GLuint m_textureObj;
 };

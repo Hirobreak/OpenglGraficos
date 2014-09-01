@@ -26,10 +26,10 @@ struct Vertex{
 
 	Vertex(){}
 
-	Vertex(Vector3f pos, Vector2f tex){
+	Vertex(const Vector3f &pos, const Vector2f &tex, const Vector3f &normal){
 		m_pos = pos;
 		m_tex = tex;
-		m_normal = Vector3f(0.0f, 0.0f, 0.0f);
+		m_normal = normal;
 	}
 };
 
@@ -42,9 +42,9 @@ public:
 		pEffect = NULL;
 		Scale = 0.0f;
 		directionalLight.Color = Vector3f(1.0f, 1.0f, 1.0f);
-		directionalLight.AmbientIntensity = 0.5f;
-		directionalLight.DiffuseIntensity = 1.5f;
-		directionalLight.Direction = Vector3f(-1.0f, -1.0f, -1.0f);
+		directionalLight.AmbientIntensity = 1.0f;
+		directionalLight.DiffuseIntensity = 1.0f;
+		directionalLight.Direction = Vector3f(1.0f, 1.0f, 0.0f);
 	}
 
 	~MainFuncs(){
@@ -55,10 +55,10 @@ public:
 
 	bool Init(){
 
-		unsigned int indices[] = {0, 3 ,1 , 1, 3, 2, 2, 3, 0, 0, 1, 2};
+		//unsigned int indices[] = {0, 3 ,1 , 1, 3, 2, 2, 3, 0, 0, 1, 2};
 
-		vertexBinding(indices, ARRAY_SIZE_IN_ELEMENTS(indices));
-		indexBinding(indices, ARRAY_SIZE_IN_ELEMENTS(indices));
+		vertexBinding();
+		//indexBinding(indices, ARRAY_SIZE_IN_ELEMENTS(indices));
 
 		pEffect = new Lighting();
 		if (!pEffect->init()){
@@ -85,7 +85,7 @@ public:
 		Scale += 0.5f;
 	
 		Pipeline p;
-		p.Rotate(0.0f, Scale, 0.0f);
+		//p.Rotate(0.0f, Scale, 0.0f);
 		p.Scale(1.0f, 1.0f, 1.0f);
 		p.WorldPos(0.0f, 0.0f, 3.0f);
 		p.setCamera(moveCam.getPos(), moveCam.getTarget(), moveCam.getUp());
@@ -95,6 +95,9 @@ public:
 		const Matrix4f &WorldTransform = p.getWorldTrans();
 		pEffect->setWorldMatrix(WorldTransform);
 		pEffect->setDirLight(directionalLight);
+		pEffect->setEyeWorldPos(moveCam.getPos());
+		pEffect->setMatSpecInten(1.0f);
+		pEffect->setMatSpecPower(32);
 		
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
@@ -105,7 +108,7 @@ public:
 		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 		textura->bind(GL_TEXTURE0);
-		glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+		glDrawArrays(GL_QUADS, 0, 4);
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
@@ -124,8 +127,21 @@ public:
 
 	virtual void keyboardFunc(unsigned char key, int x, int y){
 		switch(key){
-		case 'q':
+		case 27:
 			exit(0);
+			break;
+		case '1':
+			textura = new Texture(GL_TEXTURE_2D, "marble.bmp");
+			textura->load();
+			break;
+		case '2':
+			textura = new Texture(GL_TEXTURE_2D, "test.bmp");
+			textura->load();
+			break;
+		case '3':
+			textura = new Texture(GL_TEXTURE_2D, "wood.bmp");
+			textura->load();
+			break;
 		}
 	}
 
@@ -155,15 +171,16 @@ private:
         }
     }
 
-	void vertexBinding(const unsigned int *pIndices, unsigned int iCount){
-		Vertex Vertices[4];
-		Vertices[0] = Vertex(Vector3f(-1.0f, -1.0f, 0.5773f), Vector2f(0.0f, 0.0f));
-		Vertices[1] = Vertex(Vector3f(0.0f, -1.0f, -1.155f), Vector2f(0.5f, 0.0f));
-		Vertices[2] = Vertex(Vector3f(1.0f, -1.0f, 0.577f), Vector2f(1.0f, 0.0f));
-		Vertices[3] = Vertex(Vector3f(0.0f, 1.0f, 0.0f), Vector2f(0.5f, 1.0f));
+	void vertexBinding(){
+		const Vector3f normal = Vector3f(0.0f, 1.0f, 0.0f);
 
-		unsigned int vCount = ARRAY_SIZE_IN_ELEMENTS(Vertices);
-		CalcNormals(pIndices, iCount, Vertices, vCount);
+		Vertex Vertices[4];
+		Vertices[0] = Vertex(Vector3f(0.0f, 0.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
+		Vertices[1] = Vertex(Vector3f(0.0f, 0.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
+		Vertices[2] = Vertex(Vector3f(10.0f, 0.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
+		//Vertices[3] = Vertex(Vector3f(10.0f, 0.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
+		//Vertices[3] = Vertex(Vector3f(0.0f, 0.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
+		Vertices[3] = Vertex(Vector3f(10.0f, 0.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
 
 		glGenBuffers(1, &VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);

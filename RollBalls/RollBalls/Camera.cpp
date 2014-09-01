@@ -6,7 +6,7 @@ const static float stepScale = 0.1f;
 const static int MARGIN = 10;
 
 Camera::Camera(){
-	m_pos = Vector3f(0.0f, 0.0f, 0.0f);
+	m_pos = Vector3f(5.0f, 1.0f, -3.0f);
 	m_target = Vector3f(0.0f, 0.0f, 1.0f);
 	m_up = Vector3f(0.0f, 1.0f, 0.0f);
 }

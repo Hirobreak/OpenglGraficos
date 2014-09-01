@@ -21,12 +21,18 @@ public:
 	void setWorldMatrix(const Matrix4f &WorldIn);
 	void setTextureUnit(unsigned int TextureUnit);
 	void setDirLight(const DirectionalLight &light);
+	void setEyeWorldPos(const Vector3f &eyeWorld);
+	void setMatSpecInten(float intensity);
+	void setMatSpecPower(float Power);
 
 private:
 
 	GLuint m_WVPLocation;
 	GLuint m_samplerLocation;
 	GLuint m_WorldMatrixLocation;
+	GLuint m_eyeWorld;
+	GLuint m_SpecIntenLocation;
+	GLuint m_SpecPowerLocation;
 
 	struct {
 		GLuint color;

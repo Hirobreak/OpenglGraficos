@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Texture.h"
 
-Texture::Texture(GLenum textureTarget, const std::string& fileName){
+Texture::Texture(GLenum textureTarget, const char* fileName){
 	m_textureTarget = textureTarget;
 	m_fileName = fileName;
 }
@@ -12,7 +12,7 @@ bool Texture::load(){
 	unsigned int width, height;
 	unsigned int size;
 	unsigned char *data;
-	FILE *file = fopen("test.bmp", "rb");
+	FILE *file = fopen(m_fileName, "rb");
 	if (!file){
 		printf("Image couldnt open");
 		return false;
