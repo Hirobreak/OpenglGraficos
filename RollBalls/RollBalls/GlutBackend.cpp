@@ -30,8 +30,7 @@ static void  initCalls(){
 
 void glutBackendInit(int argc, char** argv){
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 }
 
 bool glutBackendWindow(unsigned int width, unsigned int height, const char* pTitle){
@@ -56,10 +55,10 @@ void glutBackendRun(Callbacks *callbs){
 	}
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
 	glFrontFace(GL_CW);
 	glCullFace(GL_BACK);
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
 
 	calls=callbs;
 	initCalls();
