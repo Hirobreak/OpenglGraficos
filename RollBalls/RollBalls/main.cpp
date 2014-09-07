@@ -98,7 +98,6 @@ public:
 		pEffect->setEyeWorldPos(moveCam.getPos());
 		pEffect->setMatSpecInten(1.0f);
 		pEffect->setMatSpecPower(32);
-		
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
@@ -108,12 +107,11 @@ public:
 		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 		textura->bind(GL_TEXTURE0);
-		//glutSolidSphere(1, 20, 20);
 		glDrawArrays(GL_QUADS, 0, 24);
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 		glDisableVertexAttribArray(2);
-
+		glutSolidSphere(1, 20, 20);
 		glutSwapBuffers();
 	}
 
@@ -182,40 +180,40 @@ private:
 		Vertex Vertices[24];
 
 		//bottom
-		Vertices[0] = Vertex(Vector3f(0.0f, 0.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
-		Vertices[1] = Vertex(Vector3f(0.0f, 0.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
-		Vertices[2] = Vertex(Vector3f(10.0f, 0.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
-		Vertices[3] = Vertex(Vector3f(10.0f, 0.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
+		Vertices[0] = Vertex(Vector3f(-5.0f, -2.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
+		Vertices[1] = Vertex(Vector3f(-5.0f, -2.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
+		Vertices[2] = Vertex(Vector3f(10.0f, -2.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
+		Vertices[3] = Vertex(Vector3f(10.0f, -2.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
 
 		//upper
 		Vertices[4] = Vertex(Vector3f(10.0f, 5.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
 		Vertices[5] = Vertex(Vector3f(10.0f, 5.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
-		Vertices[6] = Vertex(Vector3f(0.0f, 5.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
-		Vertices[7] = Vertex(Vector3f(0.0f, 5.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
+		Vertices[6] = Vertex(Vector3f(-5.0f, 5.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
+		Vertices[7] = Vertex(Vector3f(-5.0f, 5.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
 		
 		//front
-		Vertices[8] = Vertex(Vector3f(0.0f, 0.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
-		Vertices[9] = Vertex(Vector3f(0.0f, 5.0f, -10.0f), Vector2f(0.0f, 1.0f), normal);
+		Vertices[8] = Vertex(Vector3f(-5.0f, -2.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
+		Vertices[9] = Vertex(Vector3f(-5.0f, 5.0f, -10.0f), Vector2f(0.0f, 1.0f), normal);
 		Vertices[10] = Vertex(Vector3f(10.0f, 5.0f, -10.0f), Vector2f(1.0f, 1.0f), normal);
-		Vertices[11] = Vertex(Vector3f(10.0f, 0.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
+		Vertices[11] = Vertex(Vector3f(10.0f, -2.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
 
 		//back
-		Vertices[12] = Vertex(Vector3f(0.0f, 0.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
-		Vertices[13] = Vertex(Vector3f(0.0f, 5.0f, 20.0f), Vector2f(0.0f, 0.0f), normal);
+		Vertices[12] = Vertex(Vector3f(-5.0f, -2.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
+		Vertices[13] = Vertex(Vector3f(-5.0f, 5.0f, 20.0f), Vector2f(0.0f, 0.0f), normal);
 		Vertices[14] = Vertex(Vector3f(10.0f, 5.0f, 20.0f), Vector2f(1.0f, 0.0f), normal);
-		Vertices[15] = Vertex(Vector3f(10.0f, 0.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
+		Vertices[15] = Vertex(Vector3f(10.0f, -2.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
 
 		//left
-		Vertices[16] = Vertex(Vector3f(0.0f, 0.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
-		Vertices[17] = Vertex(Vector3f(0.0f, 5.0f, -10.0f), Vector2f(1.0f, 1.0f), normal);
-		Vertices[18] = Vertex(Vector3f(0.0f, 5.0f, 20.0f), Vector2f(1.0f, 0.0f), normal);
-		Vertices[19] = Vertex(Vector3f(0.0f, 0.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
+		Vertices[16] = Vertex(Vector3f(-5.0f, -2.0f, -10.0f), Vector2f(0.0f, 0.0f), normal);
+		Vertices[17] = Vertex(Vector3f(-5.0f, 5.0f, -10.0f), Vector2f(1.0f, 1.0f), normal);
+		Vertices[18] = Vertex(Vector3f(-5.0f, 5.0f, 20.0f), Vector2f(1.0f, 0.0f), normal);
+		Vertices[19] = Vertex(Vector3f(-5.0f, -2.0f, 20.0f), Vector2f(0.0f, 1.0f), normal);
 
 		//right
-		Vertices[20] = Vertex(Vector3f(10.0f, 0.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
+		Vertices[20] = Vertex(Vector3f(10.0f, -2.0f, 20.0f), Vector2f(1.0f, 1.0f), normal);
 		Vertices[21] = Vertex(Vector3f(10.0f, 5.0f, 20.0f), Vector2f(0.0f, 0.0f), normal);
 		Vertices[22] = Vertex(Vector3f(10.0f, 5.0f, -10.0f), Vector2f(0.0f, 1.0f), normal);
-		Vertices[23] = Vertex(Vector3f(10.0f, 0.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
+		Vertices[23] = Vertex(Vector3f(10.0f, -2.0f, -10.0f), Vector2f(1.0f, 0.0f), normal);
 
 		glGenBuffers(1, &VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);

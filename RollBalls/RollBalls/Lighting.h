@@ -48,8 +48,24 @@ struct PointLight : public BaseLight
 	}
 };
 
+struct SpotLight : public PointLight
+{
+	Vector3f Direction;
+	float Cutoff;
+
+	SpotLight()
+	{
+		Direction = Vector3f(0.0f, 0.0f, 0.0f);
+		Cutoff = 0.0f;
+	}
+};
+
 class Lighting : public Technique{
 public:
+
+	static const unsigned int MAX_POINT_LIGHTS = 2;
+	static const unsigned int MAX_SPOT_LIGHTS = 2;
+
 	Lighting();
 
 	virtual bool init();
@@ -58,6 +74,8 @@ public:
 	void setWorldMatrix(const Matrix4f &WorldIn);
 	void setTextureUnit(unsigned int TextureUnit);
 	void setDirLight(const DirectionalLight &light);
+	void SetPointLights(unsigned int NumLights, const PointLight* pLights);
+	void SetSpotLights(unsigned int NumLights, const SpotLight* pLights);
 	void setEyeWorldPos(const Vector3f &eyeWorld);
 	void setMatSpecInten(float intensity);
 	void setMatSpecPower(float Power);
@@ -70,6 +88,8 @@ private:
 	GLuint m_eyeWorld;
 	GLuint m_SpecIntenLocation;
 	GLuint m_SpecPowerLocation;
+	GLuint m_numPointLightsLocation;
+	GLuint m_numSpotLightsLocation;
 
 	struct {
 		GLuint color;
@@ -78,6 +98,32 @@ private:
 		GLuint diffuse;
 	} m_dirLightLocation;
 
+	struct {
+		GLuint Color;
+		GLuint AmbientIntensity;
+		GLuint DiffuseIntensity;
+		GLuint Position;
+		struct
+		{
+			GLuint Constant;
+			GLuint Linear;
+			GLuint Exp;
+		} Atten;
+	} m_pointLightsLocation[MAX_POINT_LIGHTS];
+
+	struct {
+		GLuint Color;
+		GLuint AmbientIntensity;
+		GLuint DiffuseIntensity;
+		GLuint Position;
+		GLuint Direction;
+		GLuint Cutoff;
+		struct {
+			GLuint Constant;
+			GLuint Linear;
+			GLuint Exp;
+		} Atten;
+	} m_spotLightsLocation[MAX_SPOT_LIGHTS];
 };
 
 #endif
