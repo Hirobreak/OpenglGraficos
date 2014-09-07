@@ -38,7 +38,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\assimp;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\ImageMagick-6;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\Magick++;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\magick;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\assimp;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\ImageMagick-6;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\Magick++;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include\magick;C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft Visual Studio 12.0\VC\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -68,16 +75,21 @@
     <ClCompile Include="Lighting.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math_3d.cpp" />
+    <ClCompile Include="mesh.cpp" />
     <ClCompile Include="Pipeline.cpp" />
     <ClCompile Include="Technique.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\ogldev_texture.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\ogldev_types.h" />
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\ogldev_util.h" />
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GlutBackend.h" />
     <ClInclude Include="Lighting.h" />
     <ClInclude Include="math_3d.h" />
+    <ClInclude Include="mesh.h" />
     <ClInclude Include="Pipeline.h" />
     <ClInclude Include="Technique.h" />
     <ClInclude Include="Texture.h" />

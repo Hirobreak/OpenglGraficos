@@ -39,6 +39,9 @@
     <ClCompile Include="Lighting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pipeline.h">
@@ -63,6 +66,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lighting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\ogldev_texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\ogldev_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\ogldev_util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

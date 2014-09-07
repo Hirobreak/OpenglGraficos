@@ -1,16 +1,15 @@
-﻿Build started 06/09/14 7:36:54 PM.
+﻿Build started 07/09/14 4:00:27 AM.
      1>Project "C:\Users\Kevin\workspace\OpenglGraficos\RollBalls\RollBalls\RollBalls.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
-     1>c:\users\kevin\workspace\openglgraficos\rollballs\rollballs\math_3d.h(30): warning C4005: 'M_PI' : macro redefinition
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\math.h(1298) : see previous definition of 'M_PI'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt mesh.cpp
+         mesh.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kevin\workspace\OpenglGraficos\RollBalls\Debug\RollBalls.exe" /INCREMENTAL /NOLOGO opengl32.lib glu32.lib glut32.lib glew32.lib CORE_DB_Magick++_.lib CORE_RL_Magick++_.lib assimp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kevin\workspace\OpenglGraficos\RollBalls\Debug\RollBalls.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kevin\workspace\OpenglGraficos\RollBalls\Debug\RollBalls.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\GlutBackend.obj
          Debug\Lighting.obj
          Debug\main.obj
          Debug\math_3d.obj
+         Debug\mesh.obj
          Debug\Pipeline.obj
          Debug\Technique.obj
          Debug\Texture.obj
@@ -19,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.99
+Time Elapsed 00:00:01.24
